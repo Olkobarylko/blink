@@ -48,14 +48,18 @@
                 </li>
             </ul>
             <a href="#" class="header__btn">Enquire</a>
-        </div>
+            <div class="header__burger">
+                <div class="header-burger-line"></div>
+                <div class="header-burger-line"></div>
+                <div class="header-burger-line"></div>
+            </div>
         </div>
     </header>
     <main>
         <section class="hero">
             <div class="container">
                 <div class="hero__wrapper">
-                    <h1 class="hero__title">Work <span>Better</span> Minutes from Home</h1>
+                    <h1 class="hero__title">Work <span>Better<br></span> Minutes from Home</h1>
                     <div class="hero__inner">
                         <p class="hero__text">Find Your Workspace</p>
                         <div class="hero__group">
@@ -264,7 +268,7 @@
                          <ul class="tabs-bottom__ul">
                             <li>On site Secretary</li>
                             <li>Cleaning</li>
-                            <li>Indoor + Outdoor Parking Pharmacy</li>
+                            <li>Indoor + Outdoor Parking</li>
                             <li>Pharmacy</li>
                          </ul>
                          <ul class="tabs-bottom__ul">
@@ -343,7 +347,7 @@
                 <img src="./images/about-decor.png" alt="">
             </div>
         </section>
-        <section class="carousel">
+        <section class="carousel-section">
             <div class="container">
                 <div class="carousel__wrapper">
                      <div class="carousel__inner">
@@ -477,13 +481,15 @@
                         </p>
                     </div>
                     <div class="comparison-slider">
+                        <div class="comparison__label-before">Unfurnished</div>
+                        <div class="comparison__label-after">Furnished / Customized</div>
                         <div class="comparison__images">
                             <img class="comparison__image comparison__image--before" src="./images/comparison-img.png"
                                 alt="" />
                             <img class="comparison__image comparison__image--after" src="./images/comparison-img.png"
                                 alt="" />
                         </div>
-
+  
                         <input type="range" min="0" max="100" value="50" class="comparison__slider" />
 
                         <div class="comparison__line"></div>
@@ -582,23 +588,16 @@
         button.style.left = value + '%';
     });
 </script>
-<script id="carousel">
-document.addEventListener('DOMContentLoaded', function () {
-  new Splide('.splide.carousel', {
-    perPage: 1,      
-    gap: 0,          
-    arrows: false,    
-    pagination: false
-  }).mount();
-});
-</script>
-<script>
+<script id="carousel-script">
 document.addEventListener('DOMContentLoaded', () => {
-  const carousels = document.querySelectorAll('.carousel-about');
+  const splideRoot = document.querySelector('.splide.carousel');
+  const carouselAboutBlocks = document.querySelectorAll('.carousel-about');
 
-  if (!carousels.length) return;
+  if (!splideRoot) return;
 
-  carousels.forEach((root) => {
+  const mobileMq = window.matchMedia('(max-width: 991px)');
+
+  carouselAboutBlocks.forEach((root) => {
     const currentEl = root.querySelector('.js-carousel-about-current');
     const nextEl = root.querySelector('.js-carousel-about-next');
     const itemEls = Array.from(root.querySelectorAll('.carousel-about__item'));
@@ -616,7 +615,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartY = 0;
     let wheelLocked = false;
 
+    function isMobile() {
+      return mobileMq.matches;
+    }
+
     function render() {
+      if (isMobile()) {
+        currentEl.innerHTML = items[0] || '';
+        if (nextEl) nextEl.innerHTML = '';
+        root.classList.add('is-single');
+        return;
+      }
+
       currentEl.innerHTML = items[currentIndex];
 
       const isSingle = items.length <= 1;
@@ -632,7 +642,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function changeSlide(direction) {
+    function changeInnerSlide(direction) {
+      if (isMobile()) return;
       if (isAnimating || items.length <= 1) return;
 
       isAnimating = true;
@@ -661,6 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
     root.addEventListener(
       'wheel',
       (event) => {
+        if (isMobile()) return;
         if (items.length <= 1) return;
         if (wheelLocked) return;
         if (Math.abs(event.deltaY) < 12) return;
@@ -669,9 +681,9 @@ document.addEventListener('DOMContentLoaded', () => {
         wheelLocked = true;
 
         if (event.deltaY > 0) {
-          changeSlide('next');
+          changeInnerSlide('next');
         } else {
-          changeSlide('prev');
+          changeInnerSlide('prev');
         }
 
         setTimeout(() => {
@@ -684,6 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
     root.addEventListener(
       'touchstart',
       (event) => {
+        if (isMobile()) return;
         if (!event.touches.length) return;
         touchStartY = event.touches[0].clientY;
       },
@@ -693,6 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
     root.addEventListener(
       'touchend',
       (event) => {
+        if (isMobile()) return;
         if (items.length <= 1) return;
         if (!event.changedTouches.length) return;
 
@@ -702,19 +716,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(deltaY) < 40) return;
 
         if (deltaY > 0) {
-          changeSlide('next');
+          changeInnerSlide('next');
         } else {
-          changeSlide('prev');
+          changeInnerSlide('prev');
         }
       },
       { passive: true }
     );
 
+    const resetForCurrentViewport = () => {
+      currentIndex = 0;
+      isAnimating = false;
+      wheelLocked = false;
+      root.classList.remove('is-animating-next', 'is-animating-prev');
+      render();
+    };
+
+    if (typeof mobileMq.addEventListener === 'function') {
+      mobileMq.addEventListener('change', resetForCurrentViewport);
+    } else if (typeof mobileMq.addListener === 'function') {
+      mobileMq.addListener(resetForCurrentViewport);
+    }
+
     render();
   });
+
+  const splide = new Splide(splideRoot, {
+    perPage: 1,
+    gap: 0,
+    arrows: false,
+    pagination: false,
+    speed: 700,
+    breakpoints: {
+      991: {
+        pagination: true,
+      },
+    },
+  });
+
+  splide.mount();
 });
 </script>
- <script id="tabs">
+<script id="tabs">
 document.addEventListener('DOMContentLoaded', function () {
   var tabsBlocks = document.querySelectorAll('.tabs__mid');
 
@@ -722,15 +765,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   tabsBlocks.forEach(function (tabsBlock, blockIndex) {
     var navList = tabsBlock.querySelector('.tabs__nav-list');
+    var slidesWrap = tabsBlock.querySelector('.tabs__slides');
     var slides = Array.from(tabsBlock.querySelectorAll('.tabs__slide'));
 
-    if (!navList || !slides.length) return;
+    if (!navList || !slidesWrap || !slides.length) return;
 
     var activeFoundIndex = slides.findIndex(function (slide) {
       return slide.classList.contains('is-active');
     });
 
-    var startIndex = Math.max(0, activeFoundIndex);
+    var activeIndex = activeFoundIndex >= 0 ? activeFoundIndex : 0;
     var blockId = tabsBlock.id || 'tabs-block-' + (blockIndex + 1);
 
     navList.innerHTML = '';
@@ -739,21 +783,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     slides.forEach(function (slide, index) {
       var titleEl = slide.querySelector('.tab-item__title');
-      if (!titleEl) return;
-
-      var navTitle = titleEl.textContent.replace(/\s+/g, ' ').trim();
+      var navTitle = titleEl
+        ? titleEl.textContent.replace(/\s+/g, ' ').trim()
+        : 'Slide ' + (index + 1);
 
       var button = document.createElement('button');
       button.type = 'button';
       button.className = 'tabs__link';
       button.textContent = navTitle;
+      button.setAttribute('title', navTitle);
+      button.setAttribute('aria-label', navTitle);
       button.setAttribute('role', 'tab');
       button.setAttribute('aria-selected', 'false');
+      button.setAttribute('aria-controls', blockId + '-panel-' + index);
       button.setAttribute('data-index', index);
       button.id = blockId + '-tab-' + index;
 
       slide.setAttribute('role', 'tabpanel');
       slide.setAttribute('aria-labelledby', button.id);
+      slide.setAttribute('aria-hidden', 'true');
       slide.id = blockId + '-panel-' + index;
 
       button.addEventListener('click', function () {
@@ -765,9 +813,30 @@ document.addEventListener('DOMContentLoaded', function () {
       buttons.push(button);
     });
 
-    function setActive(activeIndex) {
+    function updateMobileHeight() {
+      if (window.innerWidth > 991) {
+        slidesWrap.style.height = '';
+        return;
+      }
+
+      var activeSlide = slides[activeIndex];
+      if (!activeSlide) return;
+
+      requestAnimationFrame(function () {
+        slidesWrap.style.height = activeSlide.offsetHeight + 'px';
+      });
+    }
+
+    function setActive(nextIndex) {
+      if (nextIndex < 0) nextIndex = slides.length - 1;
+      if (nextIndex >= slides.length) nextIndex = 0;
+
+      activeIndex = nextIndex;
+
       slides.forEach(function (slide, index) {
-        slide.classList.toggle('is-active', index === activeIndex);
+        var isActive = index === activeIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
       });
 
       buttons.forEach(function (button, index) {
@@ -775,9 +844,62 @@ document.addEventListener('DOMContentLoaded', function () {
         button.classList.toggle('is-active', isActive);
         button.setAttribute('aria-selected', String(isActive));
       });
+
+      updateMobileHeight();
     }
 
-    setActive(startIndex);
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    tabsBlock.addEventListener('touchstart', function (event) {
+      if (window.innerWidth > 991) return;
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    tabsBlock.addEventListener('touchend', function (event) {
+      if (window.innerWidth > 991) return;
+
+      touchEndX = event.changedTouches[0].clientX;
+      var deltaX = touchEndX - touchStartX;
+
+      if (Math.abs(deltaX) < 50) return;
+
+      if (deltaX < 0) {
+        setActive(activeIndex + 1);
+      } else {
+        setActive(activeIndex - 1);
+      }
+    }, { passive: true });
+
+    slides.forEach(function (slide) {
+      var images = slide.querySelectorAll('img');
+
+      images.forEach(function (img) {
+        if (!img.complete) {
+          img.addEventListener('load', updateMobileHeight);
+        }
+      });
+    });
+
+    window.addEventListener('resize', updateMobileHeight);
+    window.addEventListener('load', updateMobileHeight);
+
+    setActive(activeIndex);
+  });
+});
+</script>
+
+<script id="header-burger">
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.header');
+  const burger = document.querySelector('.header__burger');
+
+  if (!header || !burger) return;
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    header.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
   });
 });
 </script>
