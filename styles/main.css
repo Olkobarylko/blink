@@ -667,16 +667,41 @@
 .tabs__image {
 }
 .tabs__bottom {
+  display: flex;
+  justify-content: space-between;
 }
 .tabs__bottom-title {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 130%;
+  color: #033c00;
+  font-family: "Playfair Display", sans-serif;
 }
 .tabs-bottom__ul {
+  list-style: disc;
+}
+
+.tabs__decor {
+  position: absolute;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  bottom: 0;
+  left: -80px;
+  z-index: -1;
+}
+.tabs-bottom__ul li {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 180%;
+  letter-spacing: 0.01em;
+  color: #444;
+  list-style-type: disc;
 }
 
 .tabs__mid {
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 .tabs__slides {
