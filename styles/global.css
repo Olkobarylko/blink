@@ -54,11 +54,23 @@ a {
   font-style: italic;
 }
 
+@media (width <= 991px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+}
+
 @media (width <= 768px) {
   .container {
     padding: 0px 20px;
   }
   .title-h2 {
     font-size: 40px;
+  }
+}
+
+@media (width <= 479px) {
+  html {
+    scroll-padding-top: 64px;
   }
 }
