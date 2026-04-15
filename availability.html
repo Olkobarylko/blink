@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>BLINK AVAILABILITY</title>
+</head>
+
+<body>
+    <header class="header white">
+        <div class="header__container">
+            <a href="#" class="header__logo">
+                <img src="./images/header-logo-white.svg" alt="">
+            </a>
+            <ul class="header__nav">
+                <li>
+                    <a href="#workspace-section" class="header__nav-link">Workspace Options</a>
+                </li>
+                <li>
+                    <a href="#floorplans-section" class="header__nav-link">floorplans</a>
+                </li>
+                <li>
+                    <a href="#tabs-section" class="header__nav-link">amenities</a>
+                </li>
+                <li>
+                    <a href="#location" class="header__nav-link">location</a>
+                </li>
+                <li>
+                    <a href="#experience-section" class="header__nav-link">The Experience</a>
+                </li>
+                <li>
+                    <a href="#space-section" class="header__nav-link">the space</a>
+                </li>
+                <li>
+                    <a href="#comparison-section" class="header__nav-link">configure your spaces</a>
+                </li>
+            </ul>
+            <a href="#" class="header__btn">Enquire</a>
+            <div class="header__burger">
+                <div class="header-burger-line"></div>
+                <div class="header-burger-line"></div>
+                <div class="header-burger-line"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="split">
+            <div class="container">
+                 <div class="split__wrapper">
+                    <div class="split__inner">
+                        <h1 class="split__title">Available <br>Workspaces</h1>
+                        <div class="split__info">
+                        <span class="split__total-text">28 Private Offices</span>
+                        <span class="split__total-text">4 Cubicles</span>
+                        </div>
+                    </div>
+                    <div class="split__image">
+                         <img src="./images/split-image.png" alt="">
+                    </div>
+                 </div>
+            </div>
+        </section>
+        <section class="filter">
+            <div class="container">
+                <div class="filter__wrapper">
+                    <div class="filter__top">
+                        <div class="filter__tabs">
+                            <button type="button" class="filter__tab is-active">View all</button>
+                            <button type="button" class="filter__tab">Private Offices</button>
+                            <button type="button" class="filter__tab">Cubicles</button>
+                        </div>
+        
+                        <form class="filter__form" action="#">
+                            <div class="filter__field">
+                                <select name="people" class="filter__select">
+                                    <option selected>Number of People</option>
+                                    <option>1</option>
+                                    <option>1 - 2</option>
+                                    <option>2 - 4</option>
+                                    <option>5+</option>
+                                </select>
+
+                            </div>
+        
+                            <div class="filter__field">
+                                <select name="date" class="filter__select">
+                                    <option selected>Preferred Date</option>
+                                    <option>Immediately</option>
+                                    <option>Next 30 days</option>
+                                    <option>Next 60 days</option>
+                                </select>
+                            </div>
+        
+                            <a href="#" class="filter__submit">Filter Results</a>
+                        </form>
+                    </div>
+                    <div class="filter__table" id="offices">
+                        <div class="filter__head">
+                            <div class="filter__head-col filter__head-col--workspace">
+                                <span>Workspace</span>
+                                <div class="svg-wrapper is-active">
+                                    <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.454545 0L2.5 2.07692L4.54545 0L5 0.461538L2.5 3L-2.01745e-08 0.461538L0.454545 0Z" fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter__head-col filter__head-col--users">
+                                <span>Users</span>
+                                <div class="svg-wrapper">
+                                    <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.454545 0L2.5 2.07692L4.54545 0L5 0.461538L2.5 3L-2.01745e-08 0.461538L0.454545 0Z" fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter__head-col filter__head-col--area">
+                                <span>Total Area</span>
+                                <div class="svg-wrapper">
+                                    <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.454545 0L2.5 2.07692L4.54545 0L5 0.461538L2.5 3L-2.01745e-08 0.461538L0.454545 0Z" fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter__head-col filter__head-col--price">
+                                <span>Price</span>
+                                <div class="svg-wrapper">
+                                    <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.454545 0L2.5 2.07692L4.54545 0L5 0.461538L2.5 3L-2.01745e-08 0.461538L0.454545 0Z" fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter__head-col filter__head-col--floorplan">
+                                <span>Floorplan</span>
+                            </div>
+                            <div class="filter__head-col filter__head-col--toggle">
+                            </div>
+                        </div>
+        
+                        <div class="filter__body">
+        
+                            <div class="filter__item">
+                                <div class="filter__row">
+                                    <div class="filter__col filter__col--workspace">Office 101</div>
+                                    <div class="filter__col filter__col--users">1</div>
+                                    <div class="filter__col filter__col--area">124 SF</div>
+                                    <div class="filter__col filter__col--price">$000</div>
+                                    <div class="filter__col filter__col--floorplan">
+                                        <a href="#" class="filter__floorplan-link">View Floorplan</a>
+                                    </div>
+                                    <div class="filter__col filter__col--toggle">
+                                        <button type="button" class="filter__toggle" aria-expanded="false">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+  <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+</svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="filter__dropdown">
+                                    <div class="filter__dropdown-sidebar">
+                                        <div class="filter__office">
+                                            <h2 class="filter__office-title">Office 101</h2>
+                                            <div class="filter__meta-with-link">
+                                                <div class="filter__office-meta">
+                                                    <div class="filter__office-meta-row">
+                                                        <span class="filter__office-meta-label">Users</span>
+                                                        <span class="filter__office-meta-value">1</span>
+                                                    </div>
+                                                    <div class="filter__office-meta-row">
+                                                        <span class="filter__office-meta-label">Total Area</span>
+                                                        <span class="filter__office-meta-value">124 SF</span>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="filter__mini-map-link">
+                                                    <img src="./images/minimap.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="filter__view-switch">
+                                                <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                                                <button type="button" class="filter__view-button">Furnished</button>
+                                            </div>
+                                            <a href="#" class="filter__download">Download Floorplan</a>
+                                        </div>
+                                    </div>
+                                    <div class="filter__dropdown-main">
+                                        <div class="filter__plan">
+                                            <img src="./images/101.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="filter__item">
+                                <div class="filter__row">
+                                    <div class="filter__col filter__col--workspace">Office 102</div>
+                                    <div class="filter__col filter__col--users">1</div>
+                                    <div class="filter__col filter__col--area">126 SF</div>
+                                    <div class="filter__col filter__col--price">$000</div>
+                                    <div class="filter__col filter__col--floorplan">
+                                        <a href="#" class="filter__floorplan-link">View Floorplan</a>
+                                    </div>
+                                    <div class="filter__col filter__col--toggle">
+                                        <button type="button" class="filter__toggle" aria-expanded="false">
+                                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+  <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+</svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="filter__dropdown">
+                                    <div class="filter__dropdown-sidebar">
+                                        <div class="filter__office">
+                                            <h2 class="filter__office-title">Office 102</h2>
+                                            <div class="filter__meta-with-link">
+                                                <div class="filter__office-meta">
+                                                    <div class="filter__office-meta-row">
+                                                        <span class="filter__office-meta-label">Users</span>
+                                                        <span class="filter__office-meta-value">1</span>
+                                                    </div>
+                                                    <div class="filter__office-meta-row">
+                                                        <span class="filter__office-meta-label">Total Area</span>
+                                                        <span class="filter__office-meta-value">126 SF</span>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="filter__mini-map-link">
+                                                    <img src="./images/minimap.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="filter__view-switch">
+                                                <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                                                <button type="button" class="filter__view-button">Furnished</button>
+                                            </div>
+                                            <a href="#" class="filter__download">Download Floorplan</a>
+                                        </div>
+                                    </div>
+                                    <div class="filter__dropdown-main">
+                                        <div class="filter__plan">
+                                            <img src="./images/102.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="filter__item is-open">
+                                <div class="filter__row">
+                                    <div class="filter__col filter__col--workspace">Office 103</div>
+                                    <div class="filter__col filter__col--users">1 - 2</div>
+                                    <div class="filter__col filter__col--area">144 SF</div>
+                                    <div class="filter__col filter__col--price">$000</div>
+                                    <div class="filter__col filter__col--floorplan">
+                                        <a href="#" class="filter__floorplan-link">View Floorplan</a>
+                                    </div>
+                                    <div class="filter__col filter__col--toggle">
+                                        <button type="button" class="filter__toggle" aria-expanded="true">
+                                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+  <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+</svg>
+                                        </button>
+                                    </div>
+                                </div>
+        
+                                <div class="filter__dropdown">
+                                    <div class="filter__dropdown-sidebar">
+                                        <div class="filter__office">
+                                            <h2 class="filter__office-title">Office 103</h2>
+        
+                                             <div class="filter__meta-with-link">
+                                                <div class="filter__office-meta">
+                                                <div class="filter__office-meta-row">
+                                                    <span class="filter__office-meta-label">Users</span>
+                                                    <span class="filter__office-meta-value">1 - 2</span>
+                                                </div>
+        
+                                                <div class="filter__office-meta-row">
+                                                    <span class="filter__office-meta-label">Total Area</span>
+                                                    <span class="filter__office-meta-value">144 SF</span>
+                                                </div>
+                                            </div>
+        
+                                            
+                                                <a href="#" class="filter__mini-map-link">
+                                                  <img src="./images/minimap.png" alt="">
+                                                </a>
+                                             </div>
+                                          
+        
+                                            <div class="filter__view-switch">
+                                                <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                                                <button type="button" class="filter__view-button">Furnished</button>
+                                            </div>
+        
+                                            <a href="#" class="filter__download">Download Floorplan</a>
+                                        </div>
+                                    </div>
+        
+                                    <div class="filter__dropdown-main">
+                                        <div class="filter__plan">
+                                             <img src="./images/103.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                    
+<div class="filter__cubicles-wrapper" id="cubicles">
+    <div class="filter__section-head">
+        <div class="filter__section-title">Cubicles</div>
+        <div class="filter__section-count">4 Cubicles Available</div>
+    </div>
+
+    <div class="filter__item">
+        <div class="filter__row">
+            <div class="filter__col filter__col--workspace">Cubicle 1</div>
+            <div class="filter__col filter__col--users">1</div>
+            <div class="filter__col filter__col--area">n/a</div>
+            <div class="filter__col filter__col--price">$900</div>
+            <div class="filter__col filter__col--floorplan">
+                <a href="#" class="filter__floorplan-link">View Floorplan</a>
+            </div>
+            <div class="filter__col filter__col--toggle">
+                <button type="button" class="filter__toggle" aria-expanded="false">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+                        <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="filter__dropdown">
+            <div class="filter__dropdown-sidebar">
+                <div class="filter__office">
+                    <h2 class="filter__office-title">Cubicle 1</h2>
+
+                    <div class="filter__meta-with-link">
+                        <div class="filter__office-meta">
+
+                        <div class="filter__office-meta-row">
+                            <span class="filter__office-meta-label">Users</span>
+                            <span class="filter__office-meta-value">1</span>
+                        </div>
+
+                        <div class="filter__office-meta-row">
+                            <span class="filter__office-meta-label">Total Area</span>
+                            <span class="filter__office-meta-value">n/a</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="filter__mini-map-link cubicle">
+                        <img src="./images/C1.png" alt="Cubicle 1 minimap">
+                    </a>
+                    </div>
+
+                    <div class="filter__view-switch">
+                        <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                        <button type="button" class="filter__view-button">Furnished</button>
+                    </div>
+
+                    <a href="#" class="filter__download">Download Floorplan</a>
+                </div>
+            </div>
+
+            <div class="filter__dropdown-main">
+                <div class="filter__plan">
+                    <img src="./images/C1.png" alt="Cubicle 1 floorplan">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__item">
+        <div class="filter__row">
+            <div class="filter__col filter__col--workspace">Cubicle 2</div>
+            <div class="filter__col filter__col--users">1</div>
+            <div class="filter__col filter__col--area">n/a</div>
+            <div class="filter__col filter__col--price">$900</div>
+            <div class="filter__col filter__col--floorplan">
+                <a href="#" class="filter__floorplan-link">View Floorplan</a>
+            </div>
+            <div class="filter__col filter__col--toggle">
+                <button type="button" class="filter__toggle" aria-expanded="false">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+                        <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="filter__dropdown">
+            <div class="filter__dropdown-sidebar">
+                <div class="filter__office">
+                    <h2 class="filter__office-title">Cubicle 2</h2>
+                    <div class="filter__meta-with-link">
+                        <div class="filter__office-meta">
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Users</span>
+                                <span class="filter__office-meta-value">1</span>
+                            </div>
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Total Area</span>
+                                <span class="filter__office-meta-value">n/a</span>
+                            </div>
+                        </div>
+                        <a href="#" class="filter__mini-map-link cubicle">
+                            <img src="./images/C2.png" alt="Cubicle 2 minimap">
+                        </a>
+                    </div>
+                    <div class="filter__view-switch">
+                        <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                        <button type="button" class="filter__view-button">Furnished</button>
+                    </div>
+                    <a href="#" class="filter__download">Download Floorplan</a>
+                </div>
+            </div>
+            <div class="filter__dropdown-main">
+                <div class="filter__plan">
+                    <img src="./images/C2.png" alt="Cubicle 2 floorplan">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__item">
+        <div class="filter__row">
+            <div class="filter__col filter__col--workspace">Cubicle 3</div>
+            <div class="filter__col filter__col--users">1</div>
+            <div class="filter__col filter__col--area">n/a</div>
+            <div class="filter__col filter__col--price">$900</div>
+            <div class="filter__col filter__col--floorplan">
+                <a href="#" class="filter__floorplan-link">View Floorplan</a>
+            </div>
+            <div class="filter__col filter__col--toggle">
+                <button type="button" class="filter__toggle" aria-expanded="false">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+                        <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="filter__dropdown">
+            <div class="filter__dropdown-sidebar">
+                <div class="filter__office">
+                    <h2 class="filter__office-title">Cubicle 3</h2>
+                    <div class="filter__meta-with-link">
+                        <div class="filter__office-meta">
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Users</span>
+                                <span class="filter__office-meta-value">1</span>
+                            </div>
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Total Area</span>
+                                <span class="filter__office-meta-value">n/a</span>
+                            </div>
+                        </div>
+                        <a href="#" class="filter__mini-map-link cubicle">
+                            <img src="./images/C3.png" alt="Cubicle 3 minimap">
+                        </a>
+                    </div>
+                    <div class="filter__view-switch">
+                        <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                        <button type="button" class="filter__view-button">Furnished</button>
+                    </div>
+                    <a href="#" class="filter__download">Download Floorplan</a>
+                </div>
+            </div>
+            <div class="filter__dropdown-main">
+                <div class="filter__plan">
+                    <img src="./images/C3.png" alt="Cubicle 3 floorplan">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__item">
+        <div class="filter__row">
+            <div class="filter__col filter__col--workspace">Cubicle 4</div>
+            <div class="filter__col filter__col--users">1</div>
+            <div class="filter__col filter__col--area">n/a</div>
+            <div class="filter__col filter__col--price">$900</div>
+            <div class="filter__col filter__col--floorplan">
+                <a href="#" class="filter__floorplan-link">View Floorplan</a>
+            </div>
+            <div class="filter__col filter__col--toggle">
+                <button type="button" class="filter__toggle" aria-expanded="false">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 0H7V12H5V0Z" fill="#033C00" />
+                        <path d="M12 5V7L0 7L8.74243e-08 5L12 5Z" fill="#033C00" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="filter__dropdown">
+            <div class="filter__dropdown-sidebar">
+                <div class="filter__office">
+                    <h2 class="filter__office-title">Cubicle 4</h2>
+                    <div class="filter__meta-with-link">
+                        <div class="filter__office-meta">
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Users</span>
+                                <span class="filter__office-meta-value">1</span>
+                            </div>
+                            <div class="filter__office-meta-row">
+                                <span class="filter__office-meta-label">Total Area</span>
+                                <span class="filter__office-meta-value">n/a</span>
+                            </div>
+                        </div>
+                        <a href="#" class="filter__mini-map-link cubicle">
+                            <img src="./images/C4.png" alt="Cubicle 4 minimap">
+                        </a>
+                    </div>
+                    <div class="filter__view-switch">
+                        <button type="button" class="filter__view-button is-active">Unfurnished</button>
+                        <button type="button" class="filter__view-button">Furnished</button>
+                    </div>
+                    <a href="#" class="filter__download">Download Floorplan</a>
+                </div>
+            </div>
+            <div class="filter__dropdown-main">
+                <div class="filter__plan">
+                    <img src="./images/C4.png" alt="Cubicle 4 floorplan">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__inner" goo-stagger="0.3" goo="fade-up" goo-type="stagger" goo-start="top 70%">
+                <h2 class="footer__title">See what <span>working</span> locally can feel like</h2>
+                <p class="footer-text">Schedule a private tour and experience BLINK in person. Once you step inside, the
+                    difference is immediate.</p>
+                <div class="footer__cta-list">
+                    <a href="#" class="footer__cta">Book a Tour</a>
+                    <a href="#" class="footer__cta">Join the waitlist</a>
+                </div>
+            </div>
+            <div class="footer__image" goo-stagger="0.3" goo="fade-up" goo-type="stagger" goo-start="top 70%">
+                <img src="./images/footer-logo.svg" alt="">
+            </div>
+        </div>
+        <div class="footer__decor">
+            <img src="./images/footer-decor.png" alt="">
+        </div>
+    </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/goo-motion-library@latest/dist/goo.bundle.js"></script>
+<script id="hero-select">
+    (function () {
+        const selects = document.querySelectorAll('.custom-select[data-select]');
+        function closeAll(except) {
+            selects.forEach(s => { if (s !== except) s.classList.remove('active'); });
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.custom-select')) closeAll();
+        });
+        selects.forEach(select => {
+            const trigger = select.querySelector('[data-trigger]');
+            const options = select.querySelectorAll('.option');
+            trigger.addEventListener('click', e => {
+                e.stopPropagation();
+                closeAll(select);
+                select.classList.toggle('active');
+            });
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const span = select.querySelector('[data-value]');
+                    if (span) span.textContent = opt.textContent.trim();
+                    select.classList.remove('active');
+                });
+            });
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+    })();
+</script>
+<script id="header-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.header');
+  const burger = document.querySelector('.header__burger');
+  const nav = document.querySelector('.header__nav');
+  const body = document.body;
+
+  if (!header) return;
+
+  const openMenu = () => {
+    header.classList.add('active');
+    burger?.classList.add('active');
+    body.classList.add('menu-open');
+  };
+
+  const closeMenu = () => {
+    header.classList.remove('active');
+    burger?.classList.remove('active');
+    body.classList.remove('menu-open');
+  };
+
+  const toggleMenu = () => {
+    const isOpen = header.classList.contains('active');
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
+  };
+
+  burger?.addEventListener('click', toggleMenu);
+
+  nav?.addEventListener('click', (e) => {
+    const link = e.target.closest('.header__nav-link[href^="#"]');
+    if (!link) return;
+
+    closeMenu();
+  });
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+});
+</script>
+<script id="filter-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.filter__tab');
+  const officesSection = document.getElementById('offices');
+  const cubiclesSection = document.getElementById('cubicles');
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      if (i === 0) {
+        officesSection.classList.remove('is-hidden');
+        cubiclesSection.classList.remove('is-hidden');
+      } else if (i === 1) {
+        officesSection.classList.remove('is-hidden');
+        cubiclesSection.classList.add('is-hidden');
+      } else {
+        officesSection.classList.add('is-hidden');
+        cubiclesSection.classList.remove('is-hidden');
+      }
+    });
+  });
+
+  // === Accordion ===
+  document.querySelectorAll('.filter__row').forEach(row => {
+    row.addEventListener('click', () => {
+      const item = row.closest('.filter__item');
+      if (!item) return;
+      const toggle = item.querySelector('.filter__toggle');
+      const isOpen = item.classList.contains('is-open');
+
+      item.classList.toggle('is-open');
+      if (toggle) toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // === View switch (Unfurnished / Furnished) ===
+  document.querySelectorAll('.filter__view-switch').forEach(sw => {
+    sw.querySelectorAll('.filter__view-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sw.querySelectorAll('.filter__view-button').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+  });
+});
+</script>
+
+</html>
